@@ -57,15 +57,20 @@
     width: 220px;
     margin: 0 auto;
     margin-bottom: 36px;
+    color: #eaeaea;
 }
 
 .news-article {
     display: flex;
-    gap: 22px;
+    /* gap: 22px; */
     width: 100%;
     max-width: 900px;
     height: 50%;
     margin: 0 auto;
+    border-radius: 16px;
+    background-color: #2a2c31;
+    overflow: hidden;
+    box-shadow: 0 10px 15px #1313169a;
 }
 
 .article-left {
@@ -73,12 +78,20 @@
     background-image: url("../assets/mjolby.jpg");
     background-size: cover;
     background-position: center;
-    border-radius: 16px;
+    /* border-radius: 16px; */
 }
 
 .article-right {
     width: 50%;
+    padding: 16px;
+    /* border-radius: 16px; */
     display: flex;
     flex-direction: column;
     gap: 16px;
+    
+}
+
+.article-title,
+.article-text {
+    color: #eaeaea;
 }

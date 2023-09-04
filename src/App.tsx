@@ -1,24 +1,64 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import BookingPage from './pages/BookingPage';
+import AdminPage from './pages/AdminPage';
+import HomePage from './pages/HomePage';
+import { UserContext } from "./service/UserContext";
+import { bookingMockData, userMockData } from './mockData';
 
 function App() {
+
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomePage/>,
+    },
+    {
+      path: "/booking",
+      element: <BookingPage/>,
+    },
+    {
+      path: "/admin",
+      element: <AdminPage/>,
+    },
+  ]);
+
+
+
+  useEffect(() => {
+    let bookingData = localStorage.getItem("bookingData");
+    let userData = localStorage.getItem("userData");
+
+    if (bookingData !== null && userData !== null) {
+
+      console.log(JSON.parse(userData))
+      console.log(JSON.parse(bookingData))
+
+      
+    } else {
+      console.log("missing localStorage data, setting mock data")
+
+      localStorage.setItem("userData", JSON.stringify(userMockData))
+      localStorage.setItem("bookingData", JSON.stringify(bookingMockData))
+    }
+
+    // setUser("asd")
+
+  }, [])
+  
+  
+  
+  const [user, setUser] = useState("")
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserContext.Provider value={{user, setUser}}>
+        <RouterProvider router={router} />
+      </UserContext.Provider>
     </div>
   );
 }

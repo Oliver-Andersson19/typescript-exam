@@ -1,3 +1,4 @@
+/* Booking page ligger under /booking */
 import React from 'react'
 import LoginModal from '../components/LoginModal'
 import Header from '../components/Header'

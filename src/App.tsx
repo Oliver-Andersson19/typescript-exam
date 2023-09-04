@@ -12,7 +12,7 @@ import { bookingMockData, userMockData } from './mockData';
 function App() {
 
 
-  const router = createBrowserRouter([
+  const router = createBrowserRouter([ // Alla routes
     {
       path: "/",
       element: <HomePage/>,
@@ -28,8 +28,9 @@ function App() {
   ]);
 
 
-
-  useEffect(() => {
+  // Kolla om det finns data sparad i localStorage, om inte så spara mockData
+  // Flytta ut detta till en annan fil sen?
+  useEffect(() => { 
     let bookingData = localStorage.getItem("bookingData");
     let userData = localStorage.getItem("userData");
 
@@ -56,7 +57,7 @@ function App() {
   
   return (
     <div className="App">
-      <UserContext.Provider value={{user, setUser}}>
+      <UserContext.Provider value={{user, setUser}}> 
         <RouterProvider router={router} />
       </UserContext.Provider>
     </div>

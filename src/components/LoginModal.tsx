@@ -1,3 +1,5 @@
+/*Login form som kommer upp när man trycker Logga in i headern */
+
 import React from 'react'
 import './loginmodal.css'
 
@@ -7,7 +9,7 @@ type LoginModalProps = {
 
 function LoginModal({showLoginModal}: LoginModalProps) {
 
-  const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => { // Hantera login här
     e.preventDefault();
   }
 

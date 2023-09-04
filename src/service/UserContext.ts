@@ -1,3 +1,5 @@
+// Skapa userContext så man kan komma åt User överallt
+
 import React, { SetStateAction, Dispatch } from "react";
 
 interface IUserContext {

@@ -2,36 +2,83 @@
     min-height: 100vh;
 }
 
-main {
+/* HERO SECTION */
+.hero-section {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    height: 60vh;
-
-    border-bottom: 1px solid black;
+    height: 90vh;
+    background-image: url(../assets/gym-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 
-main .welcome-container {
+.welcome-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
-    gap: 5rem;
-
+    flex-wrap: wrap;
+    gap: 50px;
+}
+.welcome-container h1 {
+    width: 26rem;
+    font-size: 54px;
+    letter-spacing: -2px;
+    color: #f3f3f3;
 }
 
-main .welcome-container h1 {
-    width: 20rem;
-}
-
-main .welcome-container button {
-
-    padding: 1rem 2rem;
-
-    border-radius: 25px;
-    border: 2px solid black;
-    background: none;
-
+.welcome-container button {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #fcba05;
+  color: #f3f3f3;
     /* backdrop-filter: blur(10px); */
+}
+
+.welcome-container button:hover {
+    background-color: #f7d168;
+    box-shadow: 0 0 10px #fcba0575;
+    transition: .3s;
+}
+
+/* NEWS SECTION */
+.news-section {
+    width: 100%;
+    height: 100vh;
+    padding: 22px;
+}
+
+.news-section h1 {
+    width: 220px;
+    margin: 0 auto;
+    margin-bottom: 36px;
+}
+
+.news-article {
+    display: flex;
+    gap: 22px;
+    width: 100%;
+    max-width: 900px;
+    height: 50%;
+    margin: 0 auto;
+}
+
+.article-left {
+    width: 50%;
+    background-image: url("../assets/mjolby.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+}
+
+.article-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }

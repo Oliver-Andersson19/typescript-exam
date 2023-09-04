@@ -1,20 +1,36 @@
-header {
+.top-header {
+  position: absolute;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 1rem;
-
-  border-bottom: 1px solid black;
+  padding: 8px 2%;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.353);
 }
 
-header button {
-  padding: 1rem 2rem;
+.logo {
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: -1.7px;
+  color: #f3f3f3;
+}
 
-  border-radius: 25px;
-  border: 2px solid black;
+.login-btn {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.353);
+  border-radius: 4px;
+  background-color: #0000;
+  color: #f3f3f3e9;
+}
 
-  background: none;
+.login-btn:hover {
+  border: 2px solid rgba(255, 255, 255, 0.782);
+  color: #f3f3f3;
+  box-shadow: 0 0 10px #f3f3f372;
+  transition: .3s;
 }
 
 

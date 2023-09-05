@@ -1,11 +1,14 @@
 .top-header {
-  position: absolute;
+  position: fixed;
+
   width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 8px 2%;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px) brightness(80%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.353);
 }
 

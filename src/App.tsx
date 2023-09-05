@@ -36,8 +36,8 @@ function App() {
 
     if (bookingData !== null && userData !== null) {
 
-      console.log(JSON.parse(userData))
-      console.log(JSON.parse(bookingData))
+      // console.log(JSON.parse(userData))
+      // console.log(JSON.parse(bookingData))
 
       
     } else {

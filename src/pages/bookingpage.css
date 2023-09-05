@@ -1,0 +1,21 @@
+.booking-page {
+    display: flex;
+    justify-content: center;
+
+    height: 100vh;
+
+}
+
+.booking-page .booking-container {
+    
+    width: 80rem;
+
+    padding: 2rem;
+    margin-top: 5rem;
+
+    background-color: white;
+}
+
+.booking-page .booking-container select {
+    
+}

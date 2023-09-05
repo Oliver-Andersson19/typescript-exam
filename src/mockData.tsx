@@ -1,13 +1,14 @@
 type roleType = "ADMIN" | "USER"
 
-type UserType = {
+export type UserType = {
     username: string;
     password: string;
     role: roleType;
 }
 
-type BookingType = {
+export type BookingType = {
     namn: string;
+    date: string;
     participants: Array<UserType>;
     maxParticipants: number;
 }
@@ -16,6 +17,7 @@ type BookingType = {
 export const bookingMockData: BookingType[] = [
     {
         namn: "Bröstpass",
+        date: "6/9",
         participants: [
         {
             username: "Johndoe",
@@ -27,6 +29,7 @@ export const bookingMockData: BookingType[] = [
     },
     {
         namn: "Ryggpass",
+        date: "7/9",
         participants: [
         {
             username: "Johndoe",

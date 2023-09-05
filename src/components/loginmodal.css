@@ -6,7 +6,7 @@
     width: 100vw;
     height: 100vh;
 
-    backdrop-filter: brightness(80%);
+    backdrop-filter: brightness(90%) blur(2px);
 }
 
 .login-modal {

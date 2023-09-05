@@ -5,9 +5,10 @@ import './loginmodal.css'
 
 type LoginModalProps = {
   showLoginModal: boolean;
+  closeLoginModal: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-function LoginModal({showLoginModal}: LoginModalProps) {
+function LoginModal({showLoginModal, closeLoginModal}: LoginModalProps) {
 
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => { // Hantera login här
     e.preventDefault();
@@ -16,7 +17,7 @@ function LoginModal({showLoginModal}: LoginModalProps) {
   return (
     <div className={`loginbg ${showLoginModal ? "" : "hide"}`}>
       <form className='login-modal'>
-          <h2>Logga in</h2>
+          <h2>Logga in <button onClick={(e) => closeLoginModal(e)}>X</button></h2>
           <label >Användarnamn</label>
           <input type="text" />
           <label >Lösenord</label>

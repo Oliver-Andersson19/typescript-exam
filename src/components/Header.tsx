@@ -12,6 +12,11 @@ function Header() {
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false)
   const {user, setUser} = useContext(UserContext); // Hämta usercontext (vilken anvädare som är inloggad)
 
+  const closeLoginModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    setShowLoginModal(false);
+  }
+
   return (
     <>
       <header>
@@ -25,7 +30,7 @@ function Header() {
           {user === "" && <button onClick={() => setShowLoginModal(true)}>Logga in</button>}
           {user !== "" && <button onClick={() => setUser("")}>Logga ut</button>}
       </header>
-      <LoginModal showLoginModal={showLoginModal}></LoginModal>
+      <LoginModal showLoginModal={showLoginModal} closeLoginModal={closeLoginModal}></LoginModal>
     </>
   )
 }

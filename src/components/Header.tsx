@@ -19,15 +19,15 @@ function Header() {
 
   return (
     <>
-      <header>
+      <header className="top-header">
         
           <Link to="/">
-            <h2>Strong n' Epic</h2>
+            <h2 className="logo">Strong n' Epic</h2>
           </Link>
           
           
           {/* Kolla om nån är inloggad eller inte */}
-          {user === "" && <button onClick={() => setShowLoginModal(true)}>Logga in</button>}
+          {user === "" && <button className="login-btn" onClick={() => setShowLoginModal(true)}>Logga in</button>}
           {user !== "" && <button onClick={() => setUser("")}>Logga ut</button>}
       </header>
       <LoginModal showLoginModal={showLoginModal} closeLoginModal={closeLoginModal}></LoginModal>

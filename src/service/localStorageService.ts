@@ -1,4 +1,4 @@
-import { BookingType, UserType } from "../mockData";
+import { DatesType, UserType, WorkoutType } from "../mockData";
 
 
 
@@ -11,7 +11,7 @@ export const getUsers = (): UserType[] => {
     }
 }
 
-export const getBookings = (): BookingType[] => {
+export const getBookings = (): DatesType[] => {
     const data = localStorage.getItem("bookingData");
     if(data !== null) {
         return JSON.parse(data)
@@ -32,5 +32,23 @@ export const createUser = ({username, password, role}: UserType): void => {
         
     } else {
         throw new Error("users is null")
+    }
+}
+
+export const book = (username: string, date: DatesType, workout: WorkoutType): void => {
+    let data = localStorage.getItem("bookingData");
+    
+    if(data !== null) {
+
+        const dataJSON: DatesType[] = JSON.parse(data)
+        const selectedDateIndex = dataJSON.findIndex((d) => d.date === date.date);
+        const selectedWorkoutIndex = dataJSON[selectedDateIndex].workouts.findIndex(
+            (w) => w.title === workout.title);
+            
+        dataJSON[selectedDateIndex].workouts[selectedWorkoutIndex].participants.push({username: username})
+        localStorage.setItem("bookingData", JSON.stringify(dataJSON))
+        
+    } else {
+        throw new Error("bookings is null")
     }
 }

@@ -1,5 +1,6 @@
 .top-header {
   position: fixed;
+  top: 0;
 
   width: 100%;
 
@@ -26,6 +27,7 @@
   border: 2px solid rgba(255, 255, 255, 0.353);
   border-radius: 4px;
   background-color: #0000;
+  /* background-color: orange; */
   color: #f3f3f3e9;
 }
 

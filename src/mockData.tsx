@@ -6,40 +6,72 @@ export type UserType = {
     role: roleType;
 }
 
-export type BookingType = {
-    namn: string;
-    date: string;
-    participants: Array<UserType>;
-    maxParticipants: number;
+export type WorkoutType = {
+    title: string,
+    participants: {username: string}[],
+    maxParticipants: number
+}
+
+export type DatesType = {
+    date: string,
+    workouts: Array<WorkoutType>,
 }
 
 
-export const bookingMockData: BookingType[] = [
+export const bookingMockData: DatesType[] = [
     {
-        namn: "Bröstpass",
         date: "6/9",
-        participants: [
-        {
-            username: "Johndoe",
-            password: "123",
-            role: "ADMIN"
-        }
-        ],
-        maxParticipants: 20
+        workouts: [
+
+        ]
     },
     {
-        namn: "Ryggpass",
         date: "7/9",
-        participants: [
+        workouts: [
         {
-            username: "Johndoe",
-            password: "123",
-            role: "ADMIN"
-        }
-        ],
-        maxParticipants: 20
+            title: "Bröstpass",
+            participants: [
+            ],
+            maxParticipants: 20
+        },
+        {
+            title: "Ryggpass",
+            participants: [
+                
+            ],
+            maxParticipants: 20
+        },
+        {
+            title: "Benpass",
+            participants: [
+
+            ],
+            maxParticipants: 20
+        },
+        ]
+    },
+    {
+        date: "8/9",
+        workouts: [
+            {
+                title: "Bröstpass",
+                participants: [
+
+                ],
+                maxParticipants: 20
+            },
+            {
+                title: "Ryggpass",
+                participants: [
+
+                ],
+                maxParticipants: 20
+            }
+        ]
     }
 ]
+
+
 
 export const userMockData: UserType[] = [
     {

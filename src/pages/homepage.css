@@ -75,7 +75,7 @@
 
 .article-left {
     width: 50%;
-    background-image: url("../assets/mjolby.jpg");
+    background-image: url(../assets/mjolby.jpg);
     background-size: cover;
     background-position: center;
     /* border-radius: 16px; */

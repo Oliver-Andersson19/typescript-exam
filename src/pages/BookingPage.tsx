@@ -11,15 +11,15 @@ function BookingPage() {
   const [bookings, setBookings] = useState<Array<DatesType>>([])
   const [selectedDate, setSelectedDate] = useState<DatesType>()
   const [selectedWorkout, setSelectedWorkout] = useState<WorkoutType>()
-
+  const [bookingsMade, setBookingsMade] = useState<number>(0);
 
   const dateRef = useRef<HTMLSelectElement>(null);
   const workoutRef = useRef<HTMLSelectElement>(null);
 
   const {user, setUser} = useContext(UserContext); // Hämta usercontext (vilken anvädare som är inloggad)
-  const [bookingsMade, setBookingsMade] = useState<number>(0);
 
-  useEffect(() => {
+
+  useEffect(() => { // Hämta data från localStorage
     setBookings(getBookings())
   }, [bookingsMade])
   
@@ -32,35 +32,6 @@ function BookingPage() {
     setSelectedWorkout(JSON.parse(e.target.value))
   }
 
-  const submitBooking = () => {
-    
-    if(!selectedDate || !selectedWorkout) { // Snygga till det här sen !!!!!!!!!!!
-      
-      // Om man inte valt dag / pass
-      alert("Välj datum och pass");
-    
-    } else {
-      
-      if(user !== "") {
-
-        if (selectedWorkout.participants.some(
-          (participant) => participant.username === user
-        )) {
-          alert(`Du har redan bokat ${selectedWorkout.title} den: ${selectedDate.date}. Vänligen kontakta oss om du vill avboka/boka om ett pass`);
-        } else {
-          book(user, selectedDate, selectedWorkout)
-          setBookingsMade(bookingsMade + 1);
-          alert(`Du har bokat ${selectedWorkout.title} den: ${selectedDate.date}`);
-        }
-
-      } else {
-        // Om användare inte är inloggad
-        alert("Logga in")
-      }
-    }
-    resetSelects()
-  }
-  
   const resetSelects = () => {
     setSelectedDate(undefined)
     setSelectedWorkout(undefined)
@@ -68,6 +39,31 @@ function BookingPage() {
     dateRef.current!.value = "";
   }
 
+  const submitBooking = () => {
+
+    if(user === "") { // Kolla så att användaren är inloggad
+      alert("Du måste vara inloggad för att kunna boka")
+      return
+    }
+
+    if(!selectedDate || !selectedWorkout) { // Kolla så att datum och pass är valt
+      alert("Välj datum och pass");
+      return
+    }
+
+    if (selectedWorkout.participants.some((participant) => participant.username === user)) {
+      // Kolla så att användaren inte redan är bokad
+      alert(`Du har redan bokat ${selectedWorkout.title} den: ${selectedDate.date}. Vänligen kontakta oss om du vill avboka/boka om ett pass`);
+
+    } else { // Boka passet
+      book(user, selectedDate, selectedWorkout)
+      setBookingsMade(bookingsMade + 1);
+      alert(`Du har bokat ${selectedWorkout.title} den: ${selectedDate.date}`);
+    }
+    
+    resetSelects() // Resetta alla val
+  }
+  
   
   return (
     <div className='booking-page'>
@@ -79,9 +75,9 @@ function BookingPage() {
 
         <h3>Välj datum och tid</h3>
         <div className="select-container">
-          <select value={JSON.stringify(selectedDate)} onChange={(e) => handleDateChange(e)} ref={dateRef}>
-
+          <select onChange={(e) => handleDateChange(e)} ref={dateRef}>
             <option disabled selected value="" style={{display: "none"}}></option>
+
             {bookings.map((day, i) => {
               return (<option value={JSON.stringify(day)} key={i}>{day.date}</option>)
             })}
@@ -89,12 +85,14 @@ function BookingPage() {
           </select>
         </div>
 
+
         <h3 className={selectedDate?.date === undefined ? "disable-select" : ""}>Välj pass</h3>
         <div className={`select-container ${selectedDate?.date === undefined ? "disable-select" : ""}`}>
-          <select value={JSON.stringify(selectedWorkout)} disabled={selectedDate?.date === undefined} onChange={(e) => handleWorkoutChange(e)}  ref={workoutRef}>
+
+          <select disabled={selectedDate?.date === undefined} onChange={(e) => handleWorkoutChange(e)} ref={workoutRef}>
             <option disabled selected value="" style={{display: "none"}}></option>
             
-            {selectedDate?.workouts.map((workout, i) => {
+            {selectedDate?.workouts.map((workout, i) => { // Mappa ut passen som finns den dagen man valt
               return (<option value={JSON.stringify(workout)} key={i}>{workout.title}</option>)
             })}
 

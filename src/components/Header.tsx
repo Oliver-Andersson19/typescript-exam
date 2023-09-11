@@ -34,13 +34,12 @@ function Header() {
             {/* Kolla om nån är inloggad eller inte */}
             {user === "" && <button className="login-btn" onClick={() => setShowLoginModal(true)}>Logga in</button>}
             {user !== "" && <>
-              <Link to="/admin">
-                <h3></h3>
-              </Link>
-              <h3>Inloggad som <span>{user}</span></h3>
+
+              {role === "ADMIN" && <Link to="/admin"><button className='login-btn'>Adminvy</button></Link>}
               <button className='login-btn' onClick={() => handleLogout()}>Logga ut</button>
+              <p>{user}</p>
+            
             </>}
-            {role}
           </div>
       </header>
       <LoginModal showLoginModal={showLoginModal} closeLoginModal={closeLoginModal}></LoginModal>

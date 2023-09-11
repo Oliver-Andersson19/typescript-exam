@@ -24,7 +24,7 @@ function WorkoutCard(props: WorkoutProps) {
         
         <div className='participant-number'>
           <h3>Deltagare: </h3>
-          <p>13</p>
+          <p>{props.workout.participants.length}/{props.workout.maxParticipants}</p>
         </div>
 
 
@@ -38,7 +38,9 @@ function WorkoutCard(props: WorkoutProps) {
 
       {showParticipants && <div className="participants">
         
-        Participants here
+        {props.workout.participants.map((participant) => {
+          return (<p>{participant.username}</p>)
+        })}
 
         <button onClick={() => toggleView()}  className='toggle-btn'>Tillbaka</button>
       </div>}

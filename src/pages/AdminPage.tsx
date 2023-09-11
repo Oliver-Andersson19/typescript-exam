@@ -10,6 +10,7 @@ function AdminPage() {
   const [bookings, setBookings] = useState<Array<DatesType>>([])
   const [bookingsMade, setBookingsMade] = useState<number>(0);
 
+
   useEffect(() => { // Hämta data från localStorage
     setBookings(getBookings())
   }, [bookingsMade])
@@ -29,13 +30,13 @@ function AdminPage() {
               <h2>{day.date}</h2>
               <div className='workout-container'>
                 {day.workouts.map((workout) => {
+
                   return (<WorkoutCard workout={workout}></WorkoutCard>)
+                
                 })}
               </div>
             </>)
           })}
-
-
         
 
 

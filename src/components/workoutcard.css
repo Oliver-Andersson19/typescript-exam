@@ -1,0 +1,33 @@
+.workout-card {
+    position: relative;
+
+    width: 20rem;
+    height: 20rem;
+
+    margin: 1rem 0 3rem 0rem;
+    padding: 1rem;
+    
+    border: 2px solid black;
+    border-radius: 20px;
+
+    /* flex: 0 1 32%; */
+}
+
+
+.participant-number {
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+.workout-card .toggle-btn {
+    position: absolute;
+
+
+    bottom: 0;
+    right: 0;
+}

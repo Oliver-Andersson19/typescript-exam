@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useContext, useRef } from 'react'
 import Header from '../components/Header'
 import './bookingpage.css'
-import { book, getBookings } from '../service/localStorageService'
+import { bookWorkout, getBookings } from '../service/localStorageService'
 import { WorkoutType, DatesType } from '../mockData'
 import { UserContext } from '../service/UserContext'
 
@@ -28,9 +28,11 @@ function BookingPage() {
     setSelectedDate(JSON.parse(e.target.value))
   }
 
+
   const handleWorkoutChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedWorkout(JSON.parse(e.target.value))
   }
+
 
   const resetSelects = () => {
     setSelectedDate(undefined)
@@ -39,8 +41,8 @@ function BookingPage() {
     dateRef.current!.value = "";
   }
 
-  const submitBooking = () => {
 
+  const submitBooking = () => {
     if(user === "") { // Kolla så att användaren är inloggad
       alert("Du måste vara inloggad för att kunna boka")
       return
@@ -56,7 +58,8 @@ function BookingPage() {
       alert(`Du har redan bokat ${selectedWorkout.title} den: ${selectedDate.date}. Vänligen kontakta oss om du vill avboka/boka om ett pass`);
 
     } else { // Boka passet
-      book(user, selectedDate, selectedWorkout)
+      
+      bookWorkout(user, selectedDate, selectedWorkout)
       setBookingsMade(bookingsMade + 1);
       alert(`Du har bokat ${selectedWorkout.title} den: ${selectedDate.date}`);
     }

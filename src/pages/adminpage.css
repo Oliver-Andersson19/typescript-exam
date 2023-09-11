@@ -1,0 +1,27 @@
+.admin-page {
+    display: flex;
+    justify-content: center;
+    background-image: url(../assets/gym-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.admin-container {
+    
+    width: 80rem;
+
+    padding: 1rem;
+    margin: 10rem 1rem 0rem 1rem;
+
+
+    background-color: white;
+}
+
+.workout-container {
+  display: flex;
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+
+  gap: 5rem;
+}

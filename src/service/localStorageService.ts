@@ -35,7 +35,7 @@ export const createUser = ({username, password, role}: UserType): void => {
     }
 }
 
-export const book = (username: string, date: DatesType, workout: WorkoutType): void => {
+export const bookWorkout = (username: string, date: DatesType, workout: WorkoutType): void => {
     let data = localStorage.getItem("bookingData");
     
     if(data !== null) {

@@ -7,7 +7,7 @@ import BookingPage from './pages/BookingPage';
 import AdminPage from './pages/AdminPage';
 import HomePage from './pages/HomePage';
 import { UserContext } from "./service/UserContext";
-import { bookingMockData, userMockData } from './mockData';
+import { UserType, bookingMockData, userMockData } from './mockData';
 
 function App() {
 
@@ -47,17 +47,16 @@ function App() {
       localStorage.setItem("bookingData", JSON.stringify(bookingMockData))
     }
 
-    // setUser("asd")
-
   }, [])
   
   
   
-  const [user, setUser] = useState("")
-  
+  const [user, setUser] = useState("");
+  const [role, setRole] = useState(""); // Initialize role with a default value
+
   return (
     <div className="App">
-      <UserContext.Provider value={{user, setUser}}> 
+      <UserContext.Provider value={{ user, role, setUser, setRole }}>
         <RouterProvider router={router} />
       </UserContext.Provider>
     </div>

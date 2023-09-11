@@ -20,7 +20,8 @@ function LoginModal({showLoginModal, closeLoginModal}: LoginModalProps) {
   const [usernameField, setUsernameField] = useState<string>("")
   const [passwordField, setPasswordField] = useState<string>("")
   const [showRegisterForm, setShowRegisterForm] = useState<boolean>(false)
-  const {user, setUser} = useContext(UserContext); // Hämta usercontext (vilken anvädare som är inloggad)
+  const {setRole, setUser} = useContext(UserContext); // Hämta usercontext (vilken anvädare som är inloggad)
+  
 
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => { // Hantera login här
     e.preventDefault();
@@ -29,12 +30,13 @@ function LoginModal({showLoginModal, closeLoginModal}: LoginModalProps) {
       if (user.username === usernameField && user.password === passwordField) {
         
         if(user.role === "ADMIN") {
-          navigate("/admin")
-        } else {
-          closeLoginModal(e)
-        };
+          navigate("/admin") 
+        }
         
+        closeLoginModal(e)
         setUser(user.username)
+        setRole(user.role)
+        
       }
     });
   }

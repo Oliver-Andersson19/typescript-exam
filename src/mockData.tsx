@@ -20,13 +20,7 @@ export type DatesType = {
 
 export const bookingMockData: DatesType[] = [
     {
-        date: "6/9",
-        workouts: [
-
-        ]
-    },
-    {
-        date: "7/9",
+        date: "2023-09-07",
         workouts: [
         {
             title: "Bröstpass",
@@ -48,10 +42,24 @@ export const bookingMockData: DatesType[] = [
             ],
             maxParticipants: 20
         },
+        {
+            title: "Axelpass",
+            participants: [
+
+            ],
+            maxParticipants: 20
+        },
+        {
+            title: "Helkroppspass",
+            participants: [
+
+            ],
+            maxParticipants: 20
+        },
         ]
     },
     {
-        date: "8/9",
+        date: "2023-09-08",
         workouts: [
             {
                 title: "Bröstpass",

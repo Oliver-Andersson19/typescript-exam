@@ -5,6 +5,7 @@ import './bookingpage.css'
 import { bookWorkout, getBookings } from '../service/localStorageService'
 import { WorkoutType, DatesType } from '../mockData'
 import { UserContext } from '../service/UserContext'
+import { FaCheck } from 'react-icons/fa'
 
 function BookingPage() {
 
@@ -76,34 +77,47 @@ function BookingPage() {
 
         <h1>Boka träningspass</h1>
 
-        <h3>Välj datum och tid</h3>
-        <div className="select-container">
-          <select onChange={(e) => handleDateChange(e)} ref={dateRef}>
-            <option disabled selected value="" style={{display: "none"}}></option>
+        <div className='booking-content'>
+          <h3>Välj datum och tid</h3>
 
-            {bookings.map((day, i) => {
-              return (<option value={JSON.stringify(day)} key={i}>{day.date}</option>)
-            })}
-          
-          </select>
-        </div>
+          <div className="select-container">
+            <select onChange={(e) => handleDateChange(e)} ref={dateRef}>
+              <option disabled selected value="" style={{display: "none"}}></option>
 
-
-        <h3 className={selectedDate?.date === undefined ? "disable-select" : ""}>Välj pass</h3>
-        <div className={`select-container ${selectedDate?.date === undefined ? "disable-select" : ""}`}>
-
-          <select disabled={selectedDate?.date === undefined} onChange={(e) => handleWorkoutChange(e)} ref={workoutRef}>
-            <option disabled selected value="" style={{display: "none"}}></option>
+              {bookings.map((day, i) => {
+                return (<option value={JSON.stringify(day)} key={i}>{day.date}</option>)
+              })}
             
-            {selectedDate?.workouts.map((workout, i) => { // Mappa ut passen som finns den dagen man valt
-              return (<option value={JSON.stringify(workout)} key={i}>{workout.title}</option>)
-            })}
+            </select>
+          </div>
+
+          <h3 className={selectedDate?.date === undefined ? "disable-select" : ""}>Välj pass</h3>
+
+          <div className={`select-container ${selectedDate?.date === undefined ? "disable-select" : ""}`}>
+
+            <select disabled={selectedDate?.date === undefined} onChange={(e) => handleWorkoutChange(e)} ref={workoutRef}>
+              <option disabled selected value="" style={{display: "none"}}></option>
+              
+              {selectedDate?.workouts.map((workout, i) => { // Mappa ut passen som finns den dagen man valt
+                // Lägg en check bredvid passen man redan är inbokad på 
+                const isBooked = workout.participants.some((participant) => participant.username === user)
+
+                return (<option value={JSON.stringify(workout)} key={i}>
+                  {workout.title}
+                  {isBooked && <>&#x2713;</>} 
+                  </option>)
+              })}
 
 
-          </select>
+            </select>
+            
+          </div>
+
+          <button className='book-btn' onClick={submitBooking}>Boka</button>
+
         </div>
+                
 
-        <button className='book-btn' onClick={submitBooking}>Boka</button>
 
       </div>
 

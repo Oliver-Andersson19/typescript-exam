@@ -14,14 +14,73 @@
     padding: 1rem;
     margin: 10rem 1rem 0rem 1rem;
 
-
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
     background-color: white;
+}
+
+.workouts-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.workouts-heading {
+  text-align: center;
+}
+
+.new-workout-btn {
+  /* font-size: 20px;
+  font-weight: 600;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #fcba05;
+  color: #f3f3f3;  
+  */
+  position: absolute;
+  right: 16px;
+  top: 0;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: white;
+  border-bottom: 1px solid black;
+  padding: 2px 0;
+}
+
+.date-container {
+  width: 100%;
+  padding: 16px;
+}
+
+.date-heading {
+  margin-bottom: 16px;
+  /* margin-top: 24px; */
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .workout-container {
   display: flex;
-  /* justify-content: space-around; */
+  align-items: baseline;
+  gap: 20px;
   flex-wrap: wrap;
+}
 
-  gap: 5rem;
+
+
+.workout-container .del-btn {
+  background: none;
+  border: none;
+}
+
+
+@media (max-width: 768px) {
+  .workout-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }

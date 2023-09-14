@@ -1,5 +1,4 @@
-import { StringMappingType } from "typescript";
-import { DatesType, UserType, WorkoutType } from "../mockData";
+import { DatesType, UserType, WorkoutType } from "../types";
 
 
 
@@ -17,7 +16,7 @@ export const getBookings = (): DatesType[] => {
     if(data !== null) {
         return JSON.parse(data)
     } else {
-        throw new Error("bookings is null")
+        throw new Error("localstorage is null")
     }
 }
 
@@ -32,7 +31,7 @@ export const createUser = ({username, password, role}: UserType): void => {
         localStorage.setItem("userData", JSON.stringify(dataJSON))
         
     } else {
-        throw new Error("users is null")
+        throw new Error("localstorage is null")
     }
 }
 
@@ -51,7 +50,7 @@ export const bookWorkout = (username: string, date: DatesType, workout: WorkoutT
         localStorage.setItem("bookingData", JSON.stringify(dataJSON))
         
     } else {
-        throw new Error("bookings is null")
+        throw new Error("localstorage is null")
     }
 }
 
@@ -73,11 +72,30 @@ export const removeUser = (username: string, date: DatesType, workout: WorkoutTy
         localStorage.setItem("bookingData", JSON.stringify(dataJSON))
 
     } else {
-        throw new Error("bookings is null")
+        throw new Error("localstorage is null")
     }
 
 }
 
+
+export const removeWorkout = (workout: WorkoutType, date: DatesType): void => {
+    let data = localStorage.getItem("bookingData");
+    
+    if(data !== null) {
+
+        const dataJSON: DatesType[] = JSON.parse(data)
+
+        const selectedDateIndex = dataJSON.findIndex((d) => d.date === date.date);
+        const selectedWorkoutIndex = dataJSON[selectedDateIndex].workouts.findIndex(
+            (w) => w.title === workout.title);
+        
+        dataJSON[selectedDateIndex].workouts.splice(selectedWorkoutIndex, 1)
+        localStorage.setItem("bookingData", JSON.stringify(dataJSON))
+
+    } else {
+        throw new Error("localstorage is null")
+    }
+}
 
 
 export const createNewWorkout = (date: string, title: string, maxParticipants: number): void => {
@@ -123,7 +141,7 @@ export const createNewWorkout = (date: string, title: string, maxParticipants: n
         localStorage.setItem("bookingData", JSON.stringify(dataJSON))
 
     } else {
-        throw new Error("bookings is null")
+        throw new Error("localstorage is null")
     }
 
 }

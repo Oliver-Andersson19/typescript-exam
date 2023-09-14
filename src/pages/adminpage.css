@@ -3,20 +3,31 @@
     justify-content: center;
     background-image: url(../assets/gym-bg.jpg);
     background-size: cover;
-    background-position: center;
-    min-height: 100vh;
+
+    background-repeat: no-repeat;
+    background-position: top;
+    height: 100dvh;
+    /* min-height: 100vh;
+    min-height: -webkit-fill-available; */
 }
 
 .admin-container {
-    
-    width: 80rem;
+    position: absolute;
+    width: 90%;
+    height: 80vh;
+    bottom: 0;
+    overflow-y: scroll;
 
     padding: 1rem;
-    margin: 10rem 1rem 0rem 1rem;
 
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
-    background-color: white;
+    background-color: #ffff;
+    border: 1rem solid #ffff;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 .workouts-section {
@@ -29,36 +40,27 @@
 
 .workouts-heading {
   text-align: center;
+  font-size: 28px;
 }
 
 .new-workout-btn {
-  /* font-size: 20px;
-  font-weight: 600;
-  padding: 16px 24px;
-  border: none;
-  border-radius: 8px;
-  background-color: #fcba05;
-  color: #f3f3f3;  
-  */
-  position: absolute;
-  right: 16px;
-  top: 0;
   border: none;
   font-size: 16px;
   font-weight: 500;
-  background-color: white;
+
+  color: black;
+  background-color: #ffff;
   border-bottom: 1px solid black;
   padding: 2px 0;
 }
 
 .date-container {
   width: 100%;
-  padding: 16px;
+  margin-bottom: 24px;
 }
 
 .date-heading {
   margin-bottom: 16px;
-  /* margin-top: 24px; */
   font-size: 20px;
   font-weight: 700;
 }
@@ -78,9 +80,30 @@
 }
 
 
+.users-section {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+
+
 @media (max-width: 768px) {
+  .admin-container {
+    width: 100%;
+    height: calc(80vh - 66px);
+  }
   .workout-container {
     flex-direction: column;
     align-items: center;
+  }
+
+  .new-workout-btn {
+    position:static;
+  }
+
+  .users-section {
+    flex-direction: column;
+    margin: 2rem 0;
   }
 }

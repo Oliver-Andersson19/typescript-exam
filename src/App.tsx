@@ -7,7 +7,8 @@ import BookingPage from './pages/BookingPage';
 import AdminPage from './pages/AdminPage';
 import HomePage from './pages/HomePage';
 import { UserContext } from "./service/UserContext";
-import { UserType, bookingMockData, userMockData } from './mockData';
+import { UserType } from './types';
+import { bookingMockData, userMockData } from './mockData';
 
 function App() {
 

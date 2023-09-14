@@ -15,7 +15,7 @@ function HomePage() {
           </Link>
         </div>
       </header>
-      <main className="news-section">
+      {/* <main className="news-section">
         <h1>Senaste Nytt</h1>
         <article className="news-article">
           <section className="article-left">
@@ -25,7 +25,7 @@ function HomePage() {
             <p className="article-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nam nesciunt nemo reiciendis necessitatibus asperiores neque nobis nisi unde animi?</p>
           </section>
         </article>
-      </main>
+      </main> */}
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
 import './workoutcard.css'
-import { DatesType, WorkoutType } from '../mockData'
+import { DatesType, WorkoutType } from '../types'
 import { BsTrashFill } from 'react-icons/bs';
 import { FaUsers } from 'react-icons/fa'
-import { removeUser } from '../service/localStorageService';
+import { removeUser, removeWorkout } from '../service/localStorageService';
 import { UserContext } from '../service/UserContext';
 
 type WorkoutProps = {
@@ -27,8 +27,13 @@ function WorkoutCard(props: WorkoutProps) {
     props.updateBookings()
   }
 
+  const handleRemoveWorkout = (e: React.MouseEvent<HTMLButtonElement>, workout: WorkoutType) => {
+    removeWorkout(workout, props.date)
+    props.updateBookings()
+  }
+
   return (
-    <div className='workout-card'>
+    <div className={`workout-card`}>
       
       
 
@@ -36,9 +41,9 @@ function WorkoutCard(props: WorkoutProps) {
 
         <header className='card-heading'>
           <div className='heading-container'>
-            <h2>
+            <h3>
               {props.workout.title}
-            </h2>
+            </h3>
             <div className='participant-number'>
               <FaUsers/>
               <p className='participant-text'>{props.workout.participants.length}/{props.workout.maxParticipants}</p>
@@ -56,9 +61,9 @@ function WorkoutCard(props: WorkoutProps) {
 
       <header className='card-heading'>
           <div className='heading-container'>
-            <h2>
+            <h3>
               {props.workout.title}
-            </h2>
+            </h3>
             <div className='participant-number'>
               <FaUsers/>
               <p className='participant-text'>{props.workout.participants.length}/{props.workout.maxParticipants}</p>
@@ -78,6 +83,8 @@ function WorkoutCard(props: WorkoutProps) {
           </p>
           )
         })}
+
+        <button className='delete-workout-btn' onClick={(e) => handleRemoveWorkout(e, props.workout)}>TA BORT PASS</button>
 
         
       </div>}

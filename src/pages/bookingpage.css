@@ -6,7 +6,7 @@
     background-image: url(../assets/gym-bg.jpg);
     background-size: cover;
     background-position: center;
-    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .booking-page .booking-container {
@@ -24,7 +24,7 @@
 .booking-page .booking-container h1 {
     margin-bottom: 2rem;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .booking-content {
@@ -32,7 +32,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 24px;
 }
 
@@ -72,11 +71,13 @@
 .booking-page .booking-container .book-btn {
     font-size: 20px;
     font-weight: 600;
-    padding: 16px 24px;
+    padding: 16px 48px;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     background-color: #fcba05;
     color: #f3f3f3;
+
+    align-self: center;
 }
 
 .booking-page .booking-container .book-btn:hover {
@@ -101,6 +102,10 @@
 
     }
 
-  
+    .booking-page .booking-container .book-btn {
+        max-width: 100%;
+        align-self: auto;
+    }
+    
 }
 

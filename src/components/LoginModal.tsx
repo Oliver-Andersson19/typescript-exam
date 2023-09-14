@@ -6,7 +6,9 @@ import { getUsers, getBookings, createUser } from '../service/localStorageServic
 import { useNavigate } from "react-router-dom";
 import './loginmodal.css'
 import { UserContext } from '../service/UserContext';
-import { UserType } from '../mockData';
+import { UserType } from '../types';
+import { AiOutlineClose } from 'react-icons/ai'
+
 
 type LoginModalProps = {
   showLoginModal: boolean;
@@ -44,8 +46,16 @@ function LoginModal({showLoginModal, closeLoginModal}: LoginModalProps) {
   const handleRegister = (e: React.MouseEvent<HTMLButtonElement>) => { // Hantera registrering här
     e.preventDefault();
     
-    createUser({username: usernameField, password: passwordField, role: "USER"})
-    setShowRegisterForm(false)
+    // selectedWorkout.participants.some((participant) => participant.username === user)
+
+    if(getUsers().some((user) => user.username === usernameField)) {
+      alert("Detta anvädarnamn är redan upptaget!")
+    } else {
+    
+      createUser({username: usernameField, password: passwordField, role: "USER"})
+      setShowRegisterForm(false)
+
+    }
 
   }
   
@@ -54,7 +64,7 @@ function LoginModal({showLoginModal, closeLoginModal}: LoginModalProps) {
     <div className={`loginbg ${showLoginModal ? "" : "hide"}`}>
 
       {!showRegisterForm && <div className='login-modal'>
-          <h2>Logga in <button onClick={(e) => closeLoginModal(e)}>X</button></h2>
+          <h2>Logga in <button onClick={(e) => closeLoginModal(e)}><AiOutlineClose/></button></h2>
           <label >Användarnamn</label>
           <input type="text" onChange={(e) => setUsernameField(e.target.value)}/>
           <label >Lösenord</label>

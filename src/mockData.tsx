@@ -1,21 +1,4 @@
-type roleType = "ADMIN" | "USER"
-
-export type UserType = {
-    username: string;
-    password: string;
-    role: roleType;
-}
-
-export type WorkoutType = {
-    title: string,
-    participants: {username: string}[],
-    maxParticipants: number
-}
-
-export type DatesType = {
-    date: string,
-    workouts: Array<WorkoutType>,
-}
+import { DatesType, UserType } from "./types"
 
 
 export const bookingMockData: DatesType[] = [
@@ -25,8 +8,32 @@ export const bookingMockData: DatesType[] = [
         {
             title: "Bröstpass",
             participants: [
+                {
+                    username: "Greta"
+                },
+                {
+                    username: "Anders"
+                },
+                {
+                    username: "Pelle"
+                },
+                {
+                    username: "Eva"
+                },
+                {
+                    username: "Yves"
+                },
+                {
+                    username: "Gertrud"
+                },
+                {
+                    username: "Kalle"
+                },
+                {
+                    username: "Ove"
+                }
             ],
-            maxParticipants: 20
+            maxParticipants: 8
         },
         {
             title: "Ryggpass",
@@ -80,7 +87,6 @@ export const bookingMockData: DatesType[] = [
 ]
 
 
-
 export const userMockData: UserType[] = [
     {
         username: "John doe",
@@ -89,6 +95,41 @@ export const userMockData: UserType[] = [
     },
     {
         username: "Greta",
+        password: "123",
+        role: "USER"
+    },
+    {
+        username: "Anders",
+        password: "123",
+        role: "USER"
+    },
+    {
+        username: "Pelle",
+        password: "123",
+        role: "USER"
+    },
+    {
+        username: "Eva",
+        password: "123",
+        role: "USER"
+    },
+    {
+        username: "Yves",
+        password: "123",
+        role: "USER"
+    },
+    {
+        username: "Gertrud",
+        password: "123",
+        role: "USER"
+    },
+    {
+        username: "Kalle",
+        password: "123",
+        role: "USER"
+    },
+    {
+        username: "Ove",
         password: "123",
         role: "USER"
     }

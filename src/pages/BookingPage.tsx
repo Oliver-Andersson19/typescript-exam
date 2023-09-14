@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext, useRef } from 'react'
 import Header from '../components/Header'
 import './bookingpage.css'
 import { bookWorkout, getBookings } from '../service/localStorageService'
-import { WorkoutType, DatesType } from '../mockData'
+import { WorkoutType, DatesType } from '../types'
 import { UserContext } from '../service/UserContext'
 import { FaCheck } from 'react-icons/fa'
 
@@ -51,6 +51,11 @@ function BookingPage() {
 
     if(!selectedDate || !selectedWorkout) { // Kolla så att datum och pass är valt
       alert("Välj datum och pass");
+      return
+    }
+
+    if (selectedWorkout.participants.length >= selectedWorkout.maxParticipants) {
+      alert("Passet är tyvärr fullt!");
       return
     }
 
@@ -103,9 +108,8 @@ function BookingPage() {
                 const isBooked = workout.participants.some((participant) => participant.username === user)
 
                 return (<option value={JSON.stringify(workout)} key={i}>
-                  {workout.title}
-                  {isBooked && <>&#x2713;</>} 
-                  </option>)
+                  {workout.title} {workout.participants.length}/{workout.maxParticipants} {isBooked && <>&#x2713;</>} 
+                </option>)
               })}
 
 

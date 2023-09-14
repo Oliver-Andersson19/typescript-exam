@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import './header.css'
 import { UserContext } from '../service/UserContext'
 import LoginModal from './LoginModal'
+import {BiLogOut} from 'react-icons/bi'
 
 function Header() {
 
@@ -36,8 +37,10 @@ function Header() {
             {user !== "" && <>
 
               {role === "ADMIN" && <Link to="/admin"><button className='login-btn'>Adminvy</button></Link>}
+              {/* <p>{user}</p> */}
               <button className='login-btn' onClick={() => handleLogout()}>Logga ut</button>
-              <p>{user}</p>
+              
+              
             
             </>}
           </div>

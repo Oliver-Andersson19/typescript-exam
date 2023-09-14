@@ -1,0 +1,57 @@
+.users-container {
+
+
+    flex: 0 0 48%;
+    padding: .5rem .8rem;
+    margin: 2rem auto 4rem auto;
+
+    border-radius: 8px;
+    box-shadow: 0 5px 15px #dedede83;
+
+}
+
+.users-container header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.users-container h3 {
+    font-size: 16px;
+}
+
+.users-container .expand-users-btn {
+    padding: .1rem .4rem;
+
+    background: none;
+    border: none;
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: orange;
+}
+
+.users-container .user-list p {
+    padding: .2rem;
+    
+}
+
+.users-container .user-list p:not(:last-child) {
+    border-bottom: 1px solid rgb(237, 237, 237);
+}
+
+.users-container .role {
+    float:right;
+    margin-left: 2rem;
+    color: red;
+}
+
+
+@media (max-width: 768px) {
+    .users-container {
+        /* margin: 1rem 0 1rem 0; */
+        margin: 0;
+        width: 100%;
+    }  
+    
+}

@@ -48,9 +48,8 @@ function AdminPage() {
         <h2 className='workouts-heading'>Adminvy</h2>
         
         <div className='users-section'>
-        <UsersContainer role='USER'></UsersContainer>
-        <UsersContainer role='ADMIN'></UsersContainer>
-        
+          <UsersContainer role='USER'></UsersContainer>
+          <UsersContainer role='ADMIN'></UsersContainer>
         </div>
 
         <section className='workouts-section'>

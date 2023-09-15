@@ -35,6 +35,14 @@ export const createUser = ({username, password, role}: UserType): void => {
     }
 }
 
+
+// createUser({
+//     username: "asd",
+//     password: "asd",
+//     role: "USER",
+// })
+
+
 export const bookWorkout = (username: string, date: DatesType, workout: WorkoutType): void => {
     let data = localStorage.getItem("bookingData");
     
@@ -77,7 +85,7 @@ export const removeUser = (username: string, date: DatesType, workout: WorkoutTy
 
 }
 
-
+ 
 export const removeWorkout = (workout: WorkoutType, date: DatesType): void => {
     let data = localStorage.getItem("bookingData");
     
